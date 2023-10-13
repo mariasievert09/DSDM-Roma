@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
+
+import 'package:flutter_application_1/telas/telaAlcoolico.dart';
+import 'telas/telaAlcoolico.dart';
+import 'package:flutter_application_1/model/Alcoolico.dart';
+import 'package:flutter_application_1/telas/telanaoAlcoolico.dart';
+
+void main() {
+  runApp(MaterialApp(home: PaginaInicial()));
+}
+
+class PaginaInicial extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 97, 29, 180),
+        title: Text("Boteco da ROMA"),
+      ),
+      body: Center(
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => telaAlcoolico()));
+            },
+            child: Column(children: [
+              Image.asset(
+                "images/alcoolico.png.png",
+                width: 255,
+                height: 255,
+              ),
+              const Text("Drinks Alcoólicos"),
+            ]),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => telaNaoAlcoolico())));
+                  },
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        "images/naoalcoolico.png.png",
+                        width: 255,
+                        height: 255,
+                      ),
+                      const Text("Drinks Não Alcoólicos"),
+                    ],
+                  ))
+            ],
+          )
+        ]),
+      ),
+    );
+  }
+}
